@@ -14,4 +14,10 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
-          script: whoami
+          script: |
+            cd /home/2024devSpringV1
+            git config --global --add safe.directory /home/2024devSpringV1
+            sudo git pull origin main
+            sudo ./gradlew bootWar
+            sudo fuser -k -n tcp 8080
+            nohup java -jar build/libs/*SNAPSHOT.war &
