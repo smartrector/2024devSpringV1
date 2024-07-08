@@ -8,16 +8,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: ssh ec2로그인
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Github Repository파일불러오기
+        uses: actions/checkout@v4
+
+      - name: JDK 17버전 설치
+        uses: actions/setup-java@v4
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PASSWORD }}
-          script: |
-            cd /home/2024devSpringV1
-            git config --global --add safe.directory /home/2024devSpringV1
-            sudo git pull origin main
-            sudo ./gradlew bootWar
-            sudo fuser -k -n tcp 8080
-            sudo nohup java -jar build/libs/*SNAPSHOT.war > /dev/null 2>&1 &
+          distribution: temurin
+          java-version: 17
