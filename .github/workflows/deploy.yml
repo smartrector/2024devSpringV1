@@ -44,4 +44,7 @@ jobs:
         run: ./gradlew bootWar
 
       - name: 빌드된 파일 이름 변경하기1
-        run: mv ./build/libs/*SNAPSHOT.jar ./project.jar
+        run: mv ./build/libs/*SNAPSHOT.war ./project.war
+
+      - name: 현재 디렉토리 파일 목록 확인
+        run: ls -al
