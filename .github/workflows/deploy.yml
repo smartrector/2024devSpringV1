@@ -37,8 +37,11 @@ jobs:
           echo "Files in src/main/resources after creating application.yml:"
           ls -al ./src/main/resources/
 
+      - name: gradlew 파일에 실행 권한 부여
+        run: chmod +x ./gradlew
+
       - name: 테스트 및 빌드하기
-        run: ./gradlew clean build
+        run: ./gradlew build
 
       - name: 빌드된 파일 이름 변경하기1
         run: mv ./build/libs/*SNAPSHOT.jar ./project.jar
