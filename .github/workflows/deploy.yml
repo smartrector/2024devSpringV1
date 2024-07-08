@@ -25,6 +25,7 @@ jobs:
 
       - name: 빌드된 파일 이름 변경하기1
         run: mv ./build/libs/*SNAPSHOT.jar ./project.jar
-        script: |
-          ls -a
-          pwd
+        with:
+          script: |
+            ls -a
+            pwd
