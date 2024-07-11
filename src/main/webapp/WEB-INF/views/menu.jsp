@@ -13,10 +13,10 @@
 %>
 <br><p>
 
-<a href=/insert?username=test1>데이터 추가111</a> <br><p>
-<a href=/select?id=1>개별 조회222</a> <br><p>
-<a href=/selectAll>전체 조회333</a> <br><p>
-<a href=/delete?id=2>데이터 삭제444</a> <br><p>
+<a href=/insert?username=test1>데이터 추가</a> <br><p>
+<a href=/select?id=1>개별 조회</a> <br><p>
+<a href=/selectAll>전체 조회</a> <br><p>
+<a href=/delete?id=2>데이터 삭제</a> <br><p>
 <a href=/update?id=1&username=홍길동>데이터 수정</a> <br><p>
 
 </body>
