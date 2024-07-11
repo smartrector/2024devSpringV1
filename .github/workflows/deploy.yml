@@ -55,7 +55,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
-          source: project.jar
+          source: project.war
           target: /home/ubuntu/myproject/tobe
 
       - name: SSH로 EC2에 접속하기
