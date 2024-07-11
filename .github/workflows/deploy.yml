@@ -67,3 +67,10 @@ jobs:
           script: |
             cd /home/ubuntu/myproject/tobe
             ls -al
+            rm -rf /home/ubuntu/myproject/current
+            mkdir /home/ubuntu/myproject/current
+            mv /home/ubuntu/myproject/tobe/project.jar /home/ubuntu/myproject/current/project.jar
+            cd /home/ubuntu/myproject/current
+            sudo fuser -k -n tcp 8080
+            sudo nohup java -jar project.war > /dev/null 2>&1 &
+            rm -rf /home/ubuntu/myproject/tobe
