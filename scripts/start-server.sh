@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 echo "--------------- 서버 배포 시작 -----------------"
 cd /home/ubuntu/2024devSpringV1
