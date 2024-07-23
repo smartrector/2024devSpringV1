@@ -73,5 +73,5 @@ jobs:
           script: |
             docker stop hanyong5 || true
             docker rm hanyong5 || true
-            docker pull ${{ steps.login-ecr.outputs.registry }}/hanyong5:latest
-            docker run -d --name hanyong5 -p 8080:8080 ${{ steps.login-ecr.outputs.registry }}/hanyong5:latest
+            docker pull ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
+            docker run -d --name hanyong5 -p 8080:8080 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
