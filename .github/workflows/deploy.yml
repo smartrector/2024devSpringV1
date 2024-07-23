@@ -43,34 +43,9 @@ jobs:
       - name: 테스트 및 빌드하기
         run: ./gradlew bootWar
 
-      - name: 빌드된 파일 이름 변경하기1
-        run: mv ./build/libs/*SNAPSHOT.war ./project.war
-
-      - name: 현재 디렉토리 파일 목록 확인
-        run: chmod +x project.war
-
-      - name: SCP로 EC2에 빌드된 파일 전송하기
-        uses: appleboy/scp-action@v0.1.7
+      - name: AWS Resource에 접근할 수 있게 AWS credentials 설정
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PASSWORD }}
-          source: project.war
-          target: /home/ubuntu/myproject/tobe
-
-      - name: SSH로 EC2에 접속하기
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PASSWORD }}
-          script: |
-            cd /home/ubuntu/myproject/tobe
-            ls -al
-            rm -rf /home/ubuntu/myproject/current
-            mkdir /home/ubuntu/myproject/current
-            mv /home/ubuntu/myproject/tobe/project.war /home/ubuntu/myproject/current/project.war
-            cd /home/ubuntu/myproject/current
-            sudo fuser -k -n tcp 8080
-            sudo nohup java -jar project.war > /dev/null 2>&1 &
-            rm -rf /home/ubuntu/myproject/tobe
+          aws-region: ap-northeast-2
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
