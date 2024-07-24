@@ -69,7 +69,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PASSWORD }}
-          script_stop: true
           script: |
             docker stop hanyong5 || true
             docker rm hanyong5 || true
