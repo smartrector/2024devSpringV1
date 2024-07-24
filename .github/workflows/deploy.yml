@@ -73,4 +73,4 @@ jobs:
             ls -a
             docker rm -f hanyong5
             docker pull ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
-            docker run -d --name hanyong5 -p 8080:8080 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
+            docker run -d --name hanyong5 -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:mysql://3.35.169.187:3306/hanyong5 -e SPRING_DATASOURCE_USERNAME=root  -e SPRING_DATASOURCE_PASSWORD=1234 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
