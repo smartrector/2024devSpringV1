@@ -71,4 +71,4 @@ jobs:
           key: ${{ secrets.PASSWORD }}
           script: |
             ls -a
-            docker pull ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
+            docker run -d --name hanyong5 -p 8080:8080 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
