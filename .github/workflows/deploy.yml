@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Github Repository 파일 불러오기2
+      - name: Github Repository 파일 불러오기3
         uses: actions/checkout@v4
 
       - name: JDK 17 버전 설치
@@ -73,4 +73,4 @@ jobs:
             ls -a
             sudo docker rm -f hanyong5
             sudo docker pull ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
-            sudo docker run -d --name hanyong5 -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/hanyong5 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
+            sudo docker run -d --name hanyong5 -p 8080:8080 -e SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/hanyong5 -e SPRING_DATASOURCE_USERNAME=root  -e SPRING_DATASOURCE_PASSWORD=1234 ${{ steps.ecr_login.outputs.registry }}/hanyong5:latest
